@@ -17,7 +17,7 @@ const Login = () => {
         console.log(email, password)
         try {
             await login(email, password)
-            navigate('/')
+            navigate('/profile')
         } catch (error) {
             setError(error.message || "Login failed. Please try again.")
         }

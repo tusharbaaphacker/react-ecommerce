@@ -65,6 +65,7 @@ export const AuthProvider = ({ children }) => {
 
 
     const fetchUserProfile = async (token) => {
+        console.log(user)
         try {
             const response = await fetch('http://localhost:3000/api/user/profile', {
                 headers: {
@@ -75,10 +76,17 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
 
             if (response.ok) {
-                setUser(data.user);
-                setIsAuthenticated(true);
+                if (data.user) {
+                    setUser(data.user);
+                    setIsAuthenticated(true);
+                } else {
+                    localStorage.removeItem("token");
+                    setIsAuthenticated(false);
+                }
             } else {
-                localStorage.removeItem('token');
+                console.error("Profile fetch failed:", data.message || "Unknown error");
+                localStorage.removeItem("token");
+                setIsAuthenticated(false);
             }
         } catch (error) {
             console.error('Error fetching profile:', error);
@@ -94,7 +102,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('token');
     };
     return (
-        <AuthContext.Provider value={{user, isAuthenticated, login, register, logout, loading}}>
+        <AuthContext.Provider value={{ user, isAuthenticated, login, register, logout, loading }}>
             {children}
         </AuthContext.Provider>
     )

@@ -6,6 +6,7 @@ import Contact from './componenets/Contact'
 import Register from './componenets/Register'
 import Login from './componenets/Login'
 import MainLayout from './componenets/MainLayout'
+import Profile from './componenets/Profile'
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
           <Route path='/about' element={<About />}></Route>
           <Route path='/gallery' element={<Gallery />}></Route>
           <Route path='/contact-us' element={<Contact />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
         </Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
