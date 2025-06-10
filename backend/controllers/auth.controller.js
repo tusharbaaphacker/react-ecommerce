@@ -5,6 +5,7 @@ import User from "../models/user.models.js"
 const register = async (req, res) => {
   try {
     const { username, email, password } = req.body;
+    console.log(username, email, password, "from regsiter");
     
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -41,6 +42,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password, "from login");
     
     if (!email || !password) {
       return res.status(400).json({ message: 'All fields are required' });

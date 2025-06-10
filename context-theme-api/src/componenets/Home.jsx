@@ -1,12 +1,13 @@
 import { useTheme } from "../context/ThemeContext";
+import Login from "./Login";
 
 const Home = () => {
     const {theme} = useTheme();
     return (
         <>
-        <p>
-         Home page {theme}
-        </p>
+        <div className={` ${theme === "dark" ? "bg-black" : "bg-white"}`}>
+        <h1 className={`${theme === "dark" ? "text-white" : "text-gray"} `}>hello from home page</h1>
+        </div>
         </>
     )
 }

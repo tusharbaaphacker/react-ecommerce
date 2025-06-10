@@ -6,12 +6,14 @@ import { BrowserRouter } from 'react-router-dom'
 import Navbar from './componenets/Navbar.jsx'
 import AllApp from './componenets/AllApp.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <ThemeProvider>
-    <BrowserRouter>
-      <Navbar />
-      <App />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
   </ThemeProvider>
 )

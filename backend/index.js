@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.json({ "hello js": "try new" });
 });
 
-
+//http://localhost:3000/api/user
 app.use("/api/user", userRoute);
 
 app.listen(3000, () => {
