@@ -3,23 +3,23 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
 const Register = () => {
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState("");
-    const { register } = useAuth();
-    const nagivate = useNavigate()
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError("");
-        console.log(username, email, password)
+    // const [username, setUsername] = useState("")
+    // const [email, setEmail] = useState("")
+    // const [password, setPassword] = useState("")
+    // const [error, setError] = useState("");
+    // const { register } = useAuth();
+    // const nagivate = useNavigate()
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setError("");
+    //     console.log(username, email, password)
 
-        try {
-            await register(username, email, password)
-            nagivate("/login")
-        } catch (error) {
-            setError(error.message || "Registration failed. Please try again.");
-        }
+    //     try {
+    //         await register(username, email, password)
+    //         nagivate("/login")
+    //     } catch (error) {
+    //         setError(error.message || "Registration failed. Please try again.");
+    //     }
 
 
         // const res = await fetch("http://localhost:3000/api/user/register",
@@ -36,11 +36,11 @@ const Register = () => {
         //     nagivate("/login")
         // }
 
-    }
+    // }
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 {error && <div style={{ color: "red" }}>{error}</div>}
                 <div>
                     <label htmlFor="username">username</label>
@@ -54,7 +54,7 @@ const Register = () => {
                     <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <button type="submit">register</button>
-            </form>
+            </form> */}
         </div>
     )
 }

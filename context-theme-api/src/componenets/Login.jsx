@@ -17,14 +17,12 @@ const Login = () => {
         console.log(email, password)
         try {
             await login(email, password)
+
+            // const res = await axios.post("http://localhost:3000/api/user/login", {email , password})
             navigate('/profile')
         } catch (error) {
             setError(error.message || "Login failed. Please try again.")
         }
-        //http://localhost:3000/api/user
-        //http://192.168.1.17:3000/api/user
-        // const res = await axios.post("http://localhost:3000/api/user/login", { email, password })
-        // navigate("/about")
     }
 
     return (
