@@ -8,9 +8,12 @@ import MainLayout from './componenets/MainLayout'
 import Profile from './componenets/Profile'
 import SingleProducts from './componenets/SingleProduct'
 import Cart from './componenets/Cart'
+import {GoogleOAuthProvider} from "@react-oauth/google"
 function App() {
+  console.log(import.meta.env.VITE_APP_CLIENT_ID, "check")
   return (
     <>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_APP_CLIENT_ID}>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path='/' element={<Home />}></Route>
@@ -23,6 +26,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
       </Routes>
+      </GoogleOAuthProvider>
     </>
   )
 }
