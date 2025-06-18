@@ -1,39 +1,17 @@
-// import {createStore} from "redux"
-// import counterReducer from "./reducer.js";
-// const store  = createStore(counterReducer);
-// export default store;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { applyMiddleware, combineReducers, createStore } from "redux"
 import themeReducer from "./themeReducer";
 import userReducer from "./userReducer";
 import productReducer from "./productReducer";
 import {thunk} from "redux-thunk"
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+
+const persistConfig = {
+    key: 'root',
+    storage,
+};
+
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -41,11 +19,15 @@ const rootReducer = combineReducers({
     product: productReducer
 })
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+
+export const persistor = persistStore(store)
+
 console.log(store.getState(), "check")
 
 store.subscribe(() => {
     console.log(store.getState(), "current state");
 });
-export default store;
+export {store};

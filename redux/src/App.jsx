@@ -1,37 +1,10 @@
-// import { useDispatch , useSelector} from "react-redux";
-// import { increment, decrement, reset } from "./redux/actions";
-// const App = () => {
-//   const count = useSelector((state)=> state.count)
-//   const dispatch = useDispatch();
-//   return (
-//     <div>
-//       {count}
-//       <button
-//         onClick={() => dispatch(increment())}
-//       >increment</button>
-//       <button
-//         onClick={() => dispatch(decrement())}
-//       >decrement</button>
-//       <button
-//         onClick={() => dispatch(reset())}
-//       >reset</button>
-//     </div>
-//   )
-// }
-
-
-// export default App;
-
-
-
-
-
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "./redux/productActions";
 const App = () => {
   const dispatch = useDispatch();
-  const { user, theme } = useSelector((state) => state);
+  const { user, theme , product } = useSelector((state) => state);
+  console.log(product.products)
 
   const [data, setData] = useState({
     username: "",
@@ -78,7 +51,16 @@ const App = () => {
       <button onClick={handleChnageTheme}>change {theme.theme}</button>
 
       <button onClick={fetchDatafromApi}>get data</button>
+
+     {product.products.length > 0 ? (
+          product.products.map((ele) => (
+            <p key={ele.id}>{ele.title}</p>
+          ))
+        ) : (
+          <p>No products available</p>
+        )}
     </div>
+
   )
 }
 
