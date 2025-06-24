@@ -93,7 +93,7 @@ export const deleteProduct = async (req, res) => {
       return res.status(403).json({ message: 'Unauthorized to delete this product' });
     }
 
-    await product.remove();
+    await product.deleteOne();
     res.json({ message: 'Product deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
