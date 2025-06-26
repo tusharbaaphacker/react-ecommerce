@@ -22,6 +22,8 @@ export const createProduct = async (req, res) => {
       imageUrl = result.secure_url;
     }
 
+    console.log(name, description, price, imageUrl, category, userId, "Product data");
+
     const product = new Product({
       name,
       description,

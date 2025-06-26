@@ -1,16 +1,15 @@
+import Category from "./components/Category";
+import CreateProduct from "./components/CreateProduct";
 import Login from "./components/Login";
-import Profile from "./components/Profile";
-import Register from "./components/Register"
-
+import Products from "./components/Product";
 const App = () => {
   return (
     <>
-    <div>
-    <Login />
-    </div>
-    <Profile />
+    {/* <Login /> */}
+    <Products />
+    {/* <Category /> */}
+    {/* <CreateProduct /> */}
     </>
-    
   )
 }
 
