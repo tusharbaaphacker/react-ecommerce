@@ -32,6 +32,15 @@ const productReducer = (state = initailState, action) => {
 
         }
     }
+
+    if (action.type === "DELETE_PRODUCT") {
+        return {
+            ...state,
+            products: state.products.filter(product => product._id !== action.payload),
+            loading: false
+        }
+    }
+    
     return state;
 };
 

@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategory } from "../redux/categoryActions";
 import { updateProduct } from "../redux/productActions";
+import { useParams } from "react-router-dom";
 
 const ProductEdit = () => {
+    const { id } = useParams();
     const { categories } = useSelector((state) => state.category);
     const dispatch = useDispatch();
 
@@ -33,7 +35,6 @@ const ProductEdit = () => {
             formData.append("image", productData.image);
         }
         const token = localStorage.getItem("token");
-        const id = "6853ecc825b7bb59a506da3c";
         dispatch(updateProduct(formData, token, id));
     };
     return (

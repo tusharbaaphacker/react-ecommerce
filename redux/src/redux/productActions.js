@@ -57,3 +57,25 @@ export const updateProduct = (formData, token, id) => {
         }
     }
 }
+
+
+
+export const deleteProduct = (id, token) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/product/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (response.ok) {
+                dispatch({ type: "DELETE_PRODUCT", payload: id });
+            } else {
+                console.error("Failed to delete product");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
