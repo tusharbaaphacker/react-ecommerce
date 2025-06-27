@@ -37,3 +37,23 @@ export const addProductAction = (formData, token) => {
         }
     };
 };
+
+
+export const updateProduct = (formData, token, id) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/product/${id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+                body: formData
+            })
+
+            const data = await response.json();
+            dispatch({type: "UPDATE_PRODUCT", payload: data.product});
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
